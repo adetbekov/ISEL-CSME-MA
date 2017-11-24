@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Thanks | Survey</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="survey">
+			<section id="thanks">
+				<form name="thanks" action="personal_data.html" method="post">
+					<div id="header">
+						<h2 class="header">Thank you for your participation! Your form was saved.</h2>
+						<br>
+						<progress id="progress_bar" value="100" max="100"></progress>
+					</div>
+	            	<br>
+	            	<p>Do you want to open new form?</p>
+	            	<br>
+	            	<input id="sub" type="submit" name="submit" value="Open">
+				</form>
+				<br><br>
+				<form id="submit" name="results" action="results.html" method="post">
+	            	<input id="sub" class="results" type="submit" name="submit" value="Results">
+				</form>
+			</section>
+		</div>
+	</div>
+	<script src="js/form_manager.js"></script>
+	<script src="js/sticky.js"></script>
+	<style>
+		body, html {
+			background-image: url('images/sakura.png');
+		}
+	</style>
+</body>
+</html>

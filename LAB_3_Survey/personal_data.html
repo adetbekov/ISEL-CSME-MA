@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Personal Data | Survey</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="survey">
+			<section id="personal_data">
+				<form name="personaldata" method="POST" onsubmit="validateForm(this)" action="tasks.html">
+					<div id="header">
+						<h2 class="header">Personal data &#x276F;</h2>
+						<br>
+						<progress id="progress_bar" value="1" max="100"></progress>
+					</div>
+					<div id="placeholder"></div>
+					<article id="pd1" class="article">
+						<h4>1 - What is your age?</h4>
+						<input id="age1" type="radio" name="age" value="-18">
+						<label for="age1">&lt;18</label>
+						<input id="age2" type="radio" name="age" value="18-25">
+						<label for="age2">18-25</label>
+						<input id="age3" type="radio" name="age" value="26-33">
+						<label for="age3">26-33</label>
+						<input id="age4" type="radio" name="age" value="34-40">
+						<label for="age4">34-40</label>
+						<input id="age5" type="radio" name="age" value="+40" required>
+						<label for="age5">&gt;40</label>
+					</article>
+					<article id="pd2">
+						<h4>2 - Gender:</h4>
+						<input id="male" type="radio" name="gender" value="Male">
+						<label for="male">Male</label>
+						<input id="female" type="radio" name="gender" value="Female" required>
+						<label for="female">Female</label>
+					</article>
+					<article id="pd3">
+						<h4>3 - How often do you use the Internet?</h4>
+						<input id="f1" type="radio" name="usage" value="Daily">
+						<label for="f1">Daily</label>
+						<br>
+						<input id="f2" type="radio" name="usage" value="Weekly">
+						<label for="f2">Weekly</label>
+						<br>
+						<input id="f3" type="radio" name="usage" value="Monthly">
+						<label for="f3">Monthly</label>
+						<br>
+						<input id="f4" type="radio" name="usage" value="Rerely">
+						<label for="f4">Rerely</label>
+						<br>
+						<input id="f5" type="radio" name="usage" value="Never">
+						<label for="f5">Never</label>
+					</article>
+					<article id="pd4">
+						<h4>4 – Indicate, in order of preference, the Web browsers you use most. Must indicate 3. Use values from 1 to 3, 1 being most preferred and 3 or less.</h4>
+						<label for="first">1<sup>st</sup> place</label>
+						<select id="first" name="browser_1" onchange="checkBrowser(this)" required>
+							<option value="">Select the best browser</option>
+							<option value="Chrome">Chrome</option>
+							<option value="Firefox">Firefox</option>
+							<option value="Internet Explorer">Internet Explorer</option>
+							<option value="Opera">Opera</option>
+							<option value="Safari">Safari</option>
+						</select>
+						<br>
+						<label for="second">2<sup>nd</sup> place</label>
+						<select id="second" name="browser_2" onchange="checkBrowser(this)" required>
+							<option value="">Select secondary browser</option>
+							<option value="Chrome">Chrome</option>
+							<option value="Firefox">Firefox</option>
+							<option value="Internet Explorer">Internet Explorer</option>
+							<option value="Opera">Opera</option>
+							<option value="Safari">Safari</option>
+						</select>
+						<br>
+						<label for="third">3<sup>rd</sup> place</label>
+						<select id="third" name="browser_3" onchange="checkBrowser(this)" required>
+							<option value="">Select third browser</option>
+							<option value="Chrome">Chrome</option>
+							<option value="Firefox">Firefox</option>
+							<option value="Internet Explorer">Internet Explorer</option>
+							<option value="Opera">Opera</option>
+							<option value="Safari">Safari</option>
+						</select>
+					</article>
+					<article id="pd5">
+						<h4>5 – Do you know other image search websites?</h4>
+						<input id="no" type="radio" name="other_search_engine" value="No" onchange="validate_other_search_engine()">
+						<label for="no">No</label>
+						<input id="yes" type="radio" name="other_search_engine" value="Yes" onchange="validate_other_search_engine()">
+						<label for="yes">Yes</label>
+						<label for="other"> <b> 6 - Which?</b></label>
+						<input id="other" type="text" name="other" value="" onchange="validate_other_search_engine()" disabled>
+					</article>
+					<div id="submit">
+					    <input id="sub" type="submit" name="submit" value="Next">
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+	<script src="js/form_manager.js"></script>
+	<script src="js/sticky.js"></script>
+	<style>
+		body, html {
+			background-image: url('images/weather.png');
+		}
+	</style>
+	<script>checkOnInit("personal_data")</script>
+</body>
+</html>

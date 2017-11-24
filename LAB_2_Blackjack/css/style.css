@@ -1,0 +1,158 @@
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, em, img,
+small, strong, b, u, i, ol, ul, li, form, 
+label, table, caption, tr, th, td, canvas, 
+footer, header, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+} 
+
+footer, header, nav {
+	display: block;
+}
+
+html, body {
+	font-family: 'Roboto', Helvetica, Arial, Sans-Serif;
+	background-color: #f7f7f7;
+	color: white;
+	line-height: 1.15;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	background-color: black;
+	background: url(../assets/tableBackground.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+body {
+	line-height: 1;
+}
+
+.container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+    max-width: 100%;
+  }
+}
+
+#game img {
+	max-width: 120px;
+	height: auto;
+	border-radius: 7px;
+	margin: 0 5px;
+}
+
+#dealer img {
+	max-width: 100px;
+}
+
+#dealer {
+	-webkit-perspective: 450px;
+	    -webkit-transform: perspective(450) rotateX(30deg);
+	       -moz-transform: perspective(450) rotateX(30deg);
+	            transform: perspective(450) rotateX(30deg);
+}
+
+body {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	min-height: 100vh!important;
+}
+
+h2 {
+	/*font-size: light;*/
+	font-size: 25px;
+	font-weight: 300;
+	padding: 15px;
+}
+
+#player {
+	margin-bottom: 20px;
+}
+
+.container {
+	height: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	overflow: hidden;
+}
+
+#logo {
+	padding-top: 20px;
+	width: 40%;
+	height: auto;
+}
+
+button {
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 3px;
+    transition: 0.3s all;
+}
+
+button:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+button:active, button:focus {
+	outline: none;
+	border: none;
+}
+
+button:disabled {
+	opacity: 0.6;
+	user-select: none;
+}
+
+#status {
+	font-size: 20px;
+	font-weight: 300;
+	padding-top: 10px;
+}

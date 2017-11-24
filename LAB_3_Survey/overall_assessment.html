@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Overall Assessment | Survey</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+	<div class="container">
+		<div id="survey">
+			<section id="tasks">
+				<form name="tasks" method="POST" onsubmit="validateForm(this)" action="thanks.html">
+					<div id="header">
+						<h2 class="header">Overall Assessment &#x276F;</h2>
+						<br>
+						<progress id="progress_bar" value="1" max="100"></progress>
+					</div>
+					<div id="placeholder"></div>
+					<br><br>
+					<p>Please answer the following questions to evaluate your usage experience and usability of the website.</p>
+					<br>
+					<fieldset>
+		                <legend><b>User Experience</b></legend>
+		                <article id="p16">
+		                    <br>
+		                    <h4>16 - For each pair of adjectives, select the option that best describes your experience of using this website.</h4>
+							<label for="p16">Fantastic </label>
+		                    <input id="p16_1botao1" type="radio" name="q16_1" value="1">
+		                    <label for="p16_1botao1"></label>
+		                    <input id="p16_1botao2" type="radio" name="q16_1" value="2">
+		                    <label for="p16_1botao2"></label>
+		                    <input id="p16_1botao3" type="radio" name="q16_1" value="3">
+		                    <label for="p16_1botao3"></label>
+		                    <input id="p16_1botao4" type="radio" name="q16_1" value="4">
+		                    <label for="p16_1botao4"></label>
+		                    <input id="p16_1botao5" type="radio" name="q16_1" value="5">
+		                    <label for="p16_1botao5"></label>
+		                    <input id="p16_1botao6" type="radio" name="q16_1" value="6">
+		                    <label for="p16_1botao6"></label>
+		                    <input id="p16_1botao7" type="radio" name="q16_1" value="7" required>
+		                    <label for="p16_1botao7"></label>
+		                    <label for="p16"> Horrible</label>
+		                    <br>
+		                    <label for="p16">Motivating </label>
+		                    <input id="p16_2botao1" type="radio" name="q16_2" value="1">
+		                    <label for="p16_2botao1"></label>
+		                    <input id="p16_2botao2" type="radio" name="q16_2" value="2">
+		                    <label for="p16_2botao2"></label>
+		                    <input id="p16_2botao3" type="radio" name="q16_2" value="3">
+		                    <label for="p16_2botao3"></label>
+		                    <input id="p16_2botao4" type="radio" name="q16_2" value="4">
+		                    <label for="p16_2botao4"></label>
+		                    <input id="p16_2botao5" type="radio" name="q16_2" value="5">
+		                    <label for="p16_2botao5"></label>
+		                    <input id="p16_2botao6" type="radio" name="q16_2" value="6">
+		                    <label for="p16_2botao6"></label>
+		                    <input id="p16_2botao7" type="radio" name="q16_2" value="7" required>
+		                    <label for="p16_2botao7"></label>
+		                    <label for="p16"> Boring</label>
+		                    <br>
+		                    <label for="p16">Gratifying </label>
+		                    <input id="p16_3botao1" type="radio" name="q16_3" value="1">
+		                    <label for="p16_3botao1"></label>
+		                    <input id="p16_3botao2" type="radio" name="q16_3" value="2">
+		                    <label for="p16_3botao2"></label>
+		                    <input id="p16_3botao3" type="radio" name="q16_3" value="3">
+		                    <label for="p16_3botao3"></label>
+		                    <input id="p16_3botao4" type="radio" name="q16_3" value="4">
+		                    <label for="p16_3botao4"></label>
+		                    <input id="p16_3botao5" type="radio" name="q16_3" value="5">
+		                    <label for="p16_3botao5"></label>
+		                    <input id="p16_3botao6" type="radio" name="q16_3" value="6">
+		                    <label for="p16_3botao6"></label>
+		                    <input id="p16_3botao7" type="radio" name="q16_3" value="7" required>
+		                    <label for="p16_3botao7"></label>
+		                    <label for="p16"> Frustrating</label>
+		                    <br>
+		                    <label for="p16">Easy </label>
+		                    <input id="p16_4botao1" type="radio" name="q16_4" value="1">
+		                    <label for="p16_4botao1"></label>
+		                    <input id="p16_4botao2" type="radio" name="q16_4" value="2">
+		                    <label for="p16_4botao2"></label>
+		                    <input id="p16_4botao3" type="radio" name="q16_4" value="3">
+		                    <label for="p16_4botao3"></label>
+		                    <input id="p16_4botao4" type="radio" name="q16_4" value="4">
+		                    <label for="p16_4botao4"></label>
+		                    <input id="p16_4botao5" type="radio" name="q16_4" value="5">
+		                    <label for="p16_4botao5"></label>
+		                    <input id="p16_4botao6" type="radio" name="q16_4" value="6">
+		                    <label for="p16_4botao6"></label>
+		                    <input id="p16_4botao7" type="radio" name="q16_4" value="7" required>
+		                    <label for="p16_4botao7"></label>
+		                    <label for="p16"> Difficult</label>
+		                </article>
+		            </fieldset>
+		            <br>
+		            <fieldset>
+		                <legend><b>Usability (SUS - System Usability Scale questionnaire)</b></legend>
+		                <article id="p17">
+		                    <br>
+		                    <h4>17 - I think that I would like to use this website frequently (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>   
+		                    <br>       
+		                    <div class="inline">
+			                    <label for="p17"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p17_botao1" type="radio" name="q17" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p17_botao1"></label>
+					                    <input class="star-rating__input" id="p17_botao2" type="radio" name="q17" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p17_botao2"></label>
+					                    <input class="star-rating__input" id="p17_botao3" type="radio" name="q17" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p17_botao3"></label>
+					                    <input class="star-rating__input" id="p17_botao4" type="radio" name="q17" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p17_botao4"></label>
+					                    <input class="star-rating__input" id="p17_botao5" type="radio" name="q17" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p17_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p17"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p18">
+		                    <br>
+		                    <h4>18 - I found the website unnecessarily complex (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p18"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p18_botao1" type="radio" name="q18" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p18_botao1"></label>
+					                    <input class="star-rating__input" id="p18_botao2" type="radio" name="q18" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p18_botao2"></label>
+					                    <input class="star-rating__input" id="p18_botao3" type="radio" name="q18" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p18_botao3"></label>
+					                    <input class="star-rating__input" id="p18_botao4" type="radio" name="q18" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p18_botao4"></label>
+					                    <input class="star-rating__input" id="p18_botao5" type="radio" name="q18" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p18_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p18"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p19">
+		                    <br>
+		                    <h4>19 - I thought the website was easy to use (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p19"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p19_botao1" type="radio" name="q19" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p19_botao1"></label>
+					                    <input class="star-rating__input" id="p19_botao2" type="radio" name="q19" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p19_botao2"></label>
+					                    <input class="star-rating__input" id="p19_botao3" type="radio" name="q19" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p19_botao3"></label>
+					                    <input class="star-rating__input" id="p19_botao4" type="radio" name="q19" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p19_botao4"></label>
+					                    <input class="star-rating__input" id="p19_botao5" type="radio" name="q19" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p19_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p19"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p20">
+		                    <br>
+		                    <h4>20 - I think that I would need the support of a technical person to be able to use this website (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p20"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p20_botao1" type="radio" name="q20" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p20_botao1"></label>
+					                    <input class="star-rating__input" id="p20_botao2" type="radio" name="q20" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p20_botao2"></label>
+					                    <input class="star-rating__input" id="p20_botao3" type="radio" name="q20" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p20_botao3"></label>
+					                    <input class="star-rating__input" id="p20_botao4" type="radio" name="q20" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p20_botao4"></label>
+					                    <input class="star-rating__input" id="p20_botao5" type="radio" name="q20" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p20_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p20"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p21">
+		                    <br>
+		                    <h4>21 - I found the various functions in this website were well integrated. (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p21"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p21_botao1" type="radio" name="q21" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p21_botao1"></label>
+					                    <input class="star-rating__input" id="p21_botao2" type="radio" name="q21" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p21_botao2"></label>
+					                    <input class="star-rating__input" id="p21_botao3" type="radio" name="q21" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p21_botao3"></label>
+					                    <input class="star-rating__input" id="p21_botao4" type="radio" name="q21" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p21_botao4"></label>
+					                    <input class="star-rating__input" id="p21_botao5" type="radio" name="q21" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p21_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p21"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p22">
+		                    <br>
+		                    <h4>22 - I thought there was too much inconsistency in this website (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p22"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p22_botao1" type="radio" name="q22" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p22_botao1"></label>
+					                    <input class="star-rating__input" id="p22_botao2" type="radio" name="q22" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p22_botao2"></label>
+					                    <input class="star-rating__input" id="p22_botao3" type="radio" name="q22" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p22_botao3"></label>
+					                    <input class="star-rating__input" id="p22_botao4" type="radio" name="q22" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p22_botao4"></label>
+					                    <input class="star-rating__input" id="p22_botao5" type="radio" name="q22" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p22_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p22"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p23">
+		                    <br>
+		                    <h4>23 - I would imagine that most people would learn to use this website very quickly (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p23"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p23_botao1" type="radio" name="q23" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p23_botao1"></label>
+					                    <input class="star-rating__input" id="p23_botao2" type="radio" name="q23" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p23_botao2"></label>
+					                    <input class="star-rating__input" id="p23_botao3" type="radio" name="q23" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p23_botao3"></label>
+					                    <input class="star-rating__input" id="p23_botao4" type="radio" name="q23" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p23_botao4"></label>
+					                    <input class="star-rating__input" id="p23_botao5" type="radio" name="q23" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p23_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p23"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p24">
+		                    <br>
+		                    <h4>24 - I found the website very awkward to use (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p24"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p24_botao1" type="radio" name="q24" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p24_botao1"></label>
+					                    <input class="star-rating__input" id="p24_botao2" type="radio" name="q24" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p24_botao2"></label>
+					                    <input class="star-rating__input" id="p24_botao3" type="radio" name="q24" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p24_botao3"></label>
+					                    <input class="star-rating__input" id="p24_botao4" type="radio" name="q24" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p24_botao4"></label>
+					                    <input class="star-rating__input" id="p24_botao5" type="radio" name="q24" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p24_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p24"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p25">
+		                    <br>
+		                    <h4>25 - I felt very confident using the website (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>	          <br>
+		                    <div class="inline">
+			                    <label for="p25"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p25_botao1" type="radio" name="q25" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p25_botao1"></label>
+					                    <input class="star-rating__input" id="p25_botao2" type="radio" name="q25" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p25_botao2"></label>
+					                    <input class="star-rating__input" id="p25_botao3" type="radio" name="q25" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p25_botao3"></label>
+					                    <input class="star-rating__input" id="p25_botao4" type="radio" name="q25" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p25_botao4"></label>
+					                    <input class="star-rating__input" id="p25_botao5" type="radio" name="q25" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p25_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p25"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		                <article id="p26">
+		                    <br>
+		                    <h4>26 - I needed to learn a lot of things before I could get going with this website (1 means “Strongly Disagree” and 5 means “Strongly Agree”).</h4>
+		                    <br>
+		                    <div class="inline">
+			                    <label for="p26"> Strongly Disagree </label>
+			                    <div class="star-rating">
+			                          <div class="star-rating__wrap">
+					                    <input class="star-rating__input" id="p26_botao1" type="radio" name="q26" value="5">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p26_botao1"></label>
+					                    <input class="star-rating__input" id="p26_botao2" type="radio" name="q26" value="4">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p26_botao2"></label>
+					                    <input class="star-rating__input" id="p26_botao3" type="radio" name="q26" value="3">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p26_botao3"></label>
+					                    <input class="star-rating__input" id="p26_botao4" type="radio" name="q26" value="2">
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p26_botao4"></label>
+					                    <input class="star-rating__input" id="p26_botao5" type="radio" name="q26" value="1" required>
+					                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p26_botao5"></label>
+					                </div>
+			                	</div>
+			                    <label for="p26"> Strongly Agree </label>
+		                    </div>
+		                </article>
+		            </fieldset>
+					<br>
+	            	<div id="submit">
+	            	    <input id="sub" type="submit" name="submit" value="Next">
+	            	</div>
+				</form>
+			</section>
+		</div>
+	</div>
+	<script src="js/form_manager.js"></script>
+	<script src="js/sticky.js"></script>
+	<style>
+		body, html {
+			background-image: url('images/food.png');
+		}
+	</style>
+	<script>
+		document.getElementById('progress_bar').value = PROGRESS_INCREMENT * 16;
+		checkOnInit("overall_assessment");
+	</script>
+</body>
+</html>

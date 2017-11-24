@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tasks | Survey</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+	<div class="container">
+		<div id="survey">
+			<section id="tasks">
+				<form name="tasks" method="POST" onsubmit="validateForm(this)" action="overall_assessment.html">
+					<div id="header">
+						<h2 class="header">Tasks &#x276F;</h2>
+						<br>
+						<progress id="progress_bar" value="1" max="100"></progress>
+					</div>
+					<div id="placeholder"></div>
+					<br><br>
+					<fieldset>
+		                <legend><b>Task 1 - Exploring the website</b></legend>
+		                <article id="p7">
+		                    <p>Explore the website freely for a few minutes to become more familiar with the features of the website.</p>
+		                    <br><br>
+		                    <h4>7 - Please indicate if you have found any errors or if you have experienced difficulty in understanding the main features of the website.</h4>
+		                    <textarea id="q7" type="text" name="q7" rows="2" cols="120" required></textarea>
+		                </article>
+		            </fieldset>
+		            <br>
+		            <fieldset>
+		            	<legend><b>Task 2 – Image Search</b></legend>
+		                <article id="p8">
+		                    <p>Choose the <b>keyword search</b> option, select a category of your choice and watch the results. Repeat the search with other categories.</p>
+		                    <br><br>
+		                    <h4>8 - How do you classify your search results by category?</h4>
+                            <div class="star-rating">
+                                  <div class="star-rating__wrap">
+        		                    <input class="star-rating__input" id="p8_botao1" type="radio" name="q8" value="5">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p8_botao1"></label>
+        		                    <input class="star-rating__input" id="p8_botao2" type="radio" name="q8" value="4">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p8_botao2"></label>
+        		                    <input class="star-rating__input" id="p8_botao3" type="radio" name="q8" value="3">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p8_botao3"></label>
+        		                    <input class="star-rating__input" id="p8_botao4" type="radio" name="q8" value="2">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p8_botao4"></label>
+        		                    <input class="star-rating__input" id="p8_botao5" type="radio" name="q8" value="1" required>
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p8_botao5"></label>
+        		                </div>
+                        	</div>
+		                </article>
+		                <article id="p9">
+		                    <h4>9 - What difficulties did you encounter in conducting the search and visualizing the results?</h4>
+		                    <textarea id="q9" type="text" name="q9" rows="2" cols="120" required></textarea>
+		                </article>
+		                <article id="p10">
+		                    <br>
+		                    <p>Choose the <b>dominant color search</b> option, select a color of your choice and observe the results. Repeat the search with other colors.</p>
+		                    <br><br>
+		                    <h4>10 - How do you classify your search results by color?</h4>
+		                    <div class="star-rating">
+                                  <div class="star-rating__wrap">
+        		                    <input class="star-rating__input" id="p10_botao1" type="radio" name="q10" value="5">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p10_botao1"></label>
+        		                    <input class="star-rating__input" id="p10_botao2" type="radio" name="q10" value="4">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p10_botao2"></label>
+        		                    <input class="star-rating__input" id="p10_botao3" type="radio" name="q10" value="3">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p10_botao3"></label>
+        		                    <input class="star-rating__input" id="p10_botao4" type="radio" name="q10" value="2">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p10_botao4"></label>
+        		                    <input class="star-rating__input" id="p10_botao5" type="radio" name="q10" value="1" required>
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p10_botao5"></label>
+        		                </div>
+                        	</div>
+		                </article>
+		                <article id="p11">
+		                    <h4>11 - What difficulties did you encounter in conducting the search and visualizing the results?</h4>
+		                    <textarea id="q11" type="text" name="q11" rows="2" cols="120" required></textarea>
+		                </article>
+		                <article id="p12">
+		                    <br>
+		                    <p>Choose the search option for similar image, select an image of your choice and observe the results.</p>
+		                    <br><br>
+		                    <h4>12 - How do you classify the results obtained by searching for similar images?</h4>
+		                    <div class="star-rating">
+                                  <div class="star-rating__wrap">
+        		                    <input class="star-rating__input" id="p12_botao1" type="radio" name="q12" value="5">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p12_botao1"></label>
+        		                    <input class="star-rating__input" id="p12_botao2" type="radio" name="q12" value="4">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p12_botao2"></label>
+        		                    <input class="star-rating__input" id="p12_botao3" type="radio" name="q12" value="3">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p12_botao3"></label>
+        		                    <input class="star-rating__input" id="p12_botao4" type="radio" name="q12" value="2">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p12_botao4"></label>
+        		                    <input class="star-rating__input" id="p12_botao5" type="radio" name="q12" value="1" required>
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p12_botao5"></label>
+        		                </div>
+                        	</div>
+		                </article>
+		                <article id="p13">
+		                    <h4>13 - How do you classifiy the usefulness of the Search for Similar Images?</h4>
+		                    <div class="star-rating">
+                                  <div class="star-rating__wrap">
+        		                    <input class="star-rating__input" id="p13_botao1" type="radio" name="q13" value="5">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p13_botao1"></label>
+        		                    <input class="star-rating__input" id="p13_botao2" type="radio" name="q13" value="4">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p13_botao2"></label>
+        		                    <input class="star-rating__input" id="p13_botao3" type="radio" name="q13" value="3">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p13_botao3"></label>
+        		                    <input class="star-rating__input" id="p13_botao4" type="radio" name="q13" value="2">
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p13_botao4"></label>
+        		                    <input class="star-rating__input" id="p13_botao5" type="radio" name="q13" value="1" required>
+        		                    <label class="star-rating__ico fa fa-star-o fa-lg" for="p13_botao5"></label>
+        		                </div>
+                        	</div>
+		                </article>
+		                <article id="p14">
+		                    <h4>14 - What difficulties did you encounter in conducting the search and visualizing the results?</h4>
+		                    <textarea id="q14" type="text" name="q14" rows="2" cols="120" required></textarea>
+		                </article>
+		                <article id="p15">
+		                    <h4>15 - What type of search do you find most appropriate for this application?</h4>
+		                    <textarea id="q15" type="text" name="q15" rows="2" cols="120" required></textarea>
+		                </article>
+	            	</fieldset>
+	            	<br>
+	            	<div id="submit">
+	            	    <input id="sub" type="submit" name="submit" value="Next">
+	            	</div>
+				</form>
+			</section>
+		</div>
+	</div>
+	<script src="js/form_manager.js"></script>
+	<script src="js/sticky.js"></script>
+	<style>
+		body, html {
+			background-image: url('images/sakura.png');
+		}
+	</style>
+	<script>
+		document.getElementById('progress_bar').value = PROGRESS_INCREMENT * 8;
+		checkOnInit("tasks");
+	</script>
+</body>
+</html>

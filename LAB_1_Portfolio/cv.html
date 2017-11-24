@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CV</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<a href="index.html" id="logo">
+			  <img src="img/acs-logo.svg" alt="Acs" height="40">
+			  <img src="img/acs-logo-text.svg" alt="Acs" height="40">
+			</a>
+			<ul class="menu">
+				<li><a href="index.html">Main</a></li>
+				<li><a href="Portfolio.html">Portfolio</a></li>
+				<li><a href="cv.html">CV</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<nav class="dropdown_menu">
+		     	<div class="strokes"></div>
+		     	<div class="strokes"></div>
+		     	<div class="strokes"></div>
+		  	</nav>
+		  	<div class="fullscreenmenu">
+				<ul> 
+					<li><a href="index.html">Main</a></li>
+					<li><a href="Portfolio.html">Portfolio</a></li>
+					<li><a href="cv.html">CV</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</header>
+		<br><br>
+		<h1 class="head">CV:</h1>
+		<br>
+
+		<div id="grid">
+			<div class="card">
+				<div class="inside">
+					<img src="img/p-1.png" alt="1">
+				</div>
+			</div>
+			<div class="card">
+				<div class="inside">
+					<img src="img/p-2.png" alt="2">
+				</div>
+			</div>
+		</div>
+		<div id="grid">
+			<div class="card">
+				<div class="inside">
+					<img src="img/p-3.png" alt="3">
+				</div>
+			</div>
+			<div class="card">
+				<div class="inside">
+					<img src="img/p-4.png" alt="4">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/main.js"></script>
+<style>
+	#grid {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 -10px;
+		padding: 0;
+	}
+	.card {
+		width: 100%;
+		padding: 10px;
+	}
+	.inside {
+		background-color: white;
+		border-radius: 3px;
+		/*padding: 15px 20px;*/
+	}
+	@media screen and (max-width: 576px) {
+		#grid {
+			flex-wrap: wrap;
+		}
+	}
+	@media screen and (min-width: 576px) and (max-width: 768px) {
+		#grid {
+			flex-wrap: wrap;
+		}
+		.card {
+			flex-basis: 260px;
+		}
+	}
+	@media screen and (min-width: 768px) and (max-width: 992px) {
+		#grid {
+			flex-wrap: wrap;
+		}
+		.card {
+			flex-basis: 350px;
+		}
+	}
+
+	.head {
+		color: white;
+		font-size: 30px;
+		font-weight: 100;
+	}
+	.img {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
+	}
+	.text h2 {
+		font-weight: bold;
+		font-size: 20px;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.text ul {
+		padding: 20px;
+	}
+	.inside img {
+		max-width: 100%;
+	}
+</style>
+</html>

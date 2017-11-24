@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Results | Survey</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="results()">
+	<div class="container">
+		<div id="survey">
+			<section id="thanks">
+				<form name="thanks" action="personal_data.html" method="post">
+					<div id="header">
+						<h2 class="header">Results &#x276F;</h2>
+					</div>
+	            	<br>
+	            	<div id="results"></div>
+	            	<br>
+	            	<br>
+	            	<input id="sub" type="submit" name="submit" value="Open new form">
+				</form>
+			</section>
+		</div>
+	</div>
+	<script src="js/form_manager.js"></script>
+	<script src="js/results.js"></script>
+	<style>
+		body, html {
+			background-image: url('images/weather.png');
+		}
+	</style>
+</body>
+</html>

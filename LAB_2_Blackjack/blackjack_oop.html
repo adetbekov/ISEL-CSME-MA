@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/card_faces.js"></script>
+    <script src="js/TweenMax.js"></script>
+    <script src="js/blackjack_object.js"></script>
+    <script src="js/blackjack_manager.js"></script>
+    <title>BlackJack</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <img id="logo" src="assets/Blackjack-Logo.png" alt="Blackjack">
+        <p id="status"></p>
+      </header>
+
+      <section id="game">
+        <h2>Dealer</h2>
+        <p id="dealer">
+          <img src="" alt="">
+        </p>
+        <h2>Player</h2>
+        <p id="player"></p>
+      </section>
+
+      <footer>
+        <section id="buttons">
+          <button id="card" type="button" onclick="player_new_card()">Card</button>
+          <button id="stand" type="button" onclick="dealer_finish()">Stand</button>
+          <button id="new_game" type="button" onclick="new_game()" disabled>New Game</button>
+        </section>
+        <section id="sec_debug">
+          <h2>Debug</h2>
+          <p id="debug"></p>
+        </section>
+      </footer>
+      <section>
+        <script> window.onload = new_game();</script>
+      </section>
+    </div>
+  </body>
+
+</html> 
