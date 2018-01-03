@@ -7,6 +7,7 @@ class FotoPrint
         this.offsetx = null;
         this.offsety = null;
         this.shpinDrawing = new Pool(100);
+        this.shpinDrawingSelector = new Pool(100);
     }
 
     init() {
@@ -19,8 +20,11 @@ class FotoPrint
         let h = new Heart(250, 250, 80, "pink");
         this.shpinDrawing.insert(h);
 
-        let dad = new Picture(200, 200, 70, 70, "imgs/allison1.jpg");
-        this.shpinDrawing.insert(dad);
+        // let dad = new Picture(200, 200, 70, 70, "imgs/allison1.jpg");
+        // this.shpinDrawing.insert(dad);
+
+        let b = new Bear(340, 70, 50, "#d35400");
+        this.shpinDrawing.insert(b);
     }
 
     drawObj(cnv) {
@@ -69,8 +73,29 @@ class FotoPrint
         return false;
     }
 
+    insertOnCanvas(obj){
+        this.shpinDrawing.insert(obj);
+    }
+
+    // selectObj(mx, my){
+    //     let item = null;
+    //     let endpt = this.shpinDrawingSel.stuff.length-1;
+
+    //     for (let i = endpt; i >= 0; i--) {
+    //         if (this.shpinDrawingSel.stuff[i].mouseOver(mx,my)) {
+    //             item = this.cloneObj(this.shpinDrawingSel.stuff[i]);
+    //             this.shpinDrawing.insert(item);
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
     cloneObj (obj) {
         let item = {};
+        let objColor = document.getElementById('i2').value;
+        let txtColor = document.getElementById('i3').value;
+        let text = document.getElementById('text').value;
 
         switch(obj.name) {
             case "R":
@@ -88,6 +113,23 @@ class FotoPrint
             case "H":
                 item = new Heart(obj.posx + 20, obj.posy + 20, obj.drx * 4, obj.color);
                 break;
+
+            case "B":
+                item = new Bear(obj.posx + 20, obj.posy + 20, obj.r, objColor);
+                break;
+
+            case "G":
+                item = new Ghost(obj.posx, obj.posy, obj.w, obj.h, objColor);
+                break;
+
+            case "V":
+                item = new Rosa_Ventos(obj.posx, obj.posy, obj.w, objColor);
+                break;
+
+            case "T":
+                item = new Text(obj.posx, obj.posy, obj.w, obj.h, text, txtColor);
+                break;
+
             default: throw new TypeError("Can not clone this type of object");
         }
         return item;

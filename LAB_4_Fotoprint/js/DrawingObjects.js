@@ -64,6 +64,7 @@ class Rect extends DrawingObjects
         return ((mx >= this.posx) && (mx <= (this.posx + this.w)) && (my >= this.posy) && (my <= (this.posy + this.h)));
 
     }
+
 }
 
 class Picture extends DrawingObjects
@@ -204,87 +205,76 @@ class Heart extends DrawingObjects
 }
 
 class Bear extends DrawingObjects {
-
-  constructor(x, y, radius, color) {
-
-    super(x, y, 'B');
-    this.radius = radius;
-    this.color = color;
-    this.contrast_color = "white";
-    this.head_color = "#5b0e0e";
-
-    this.head = new Oval(this.posx, this.posy, this.radius / 1.5, 1, 1, this.head_color);
-
-    this.left_inner_ear = new Oval(this.posx - this.radius / 2, this.posy - this.radius / 2, this.radius / 5, 1, 1, this.color);
-    this.right_inner_ear = new Oval(this.posx + this.radius / 2, this.posy - this.radius / 2, this.radius / 5, 1, 1, this.color);
-
-    this.left_outter_eye = new Oval(this.posx - this.radius / 4, this.posy - this.radius / 5, this.radius / 10, 1, 1, this.color);
-    this.right_outter_eye = new Oval(this.posx + this.radius / 4, this.posy - this.radius / 5, this.radius / 10, 1, 1, this.color);
-    this.left_inner_eye = new Oval(this.posx - this.radius / 4 - 4, this.posy - this.radius / 5 - 4, this.radius / 30, 1, 1, this.contrast_color);
-    this.right_inner_eye = new Oval(this.posx + this.radius / 4 - 4, this.posy - this.radius / 5 - 4, this.radius / 30, 1, 1, this.contrast_color);
-
-    this.outter_nouse = new Oval(this.posx, this.posy, this.radius / 6, 1.2, 1, this.color);
-    this.inner_nouse = new Oval(this.posx - 10, this.posy - 7, this.radius / 30, 1.2, 1, this.contrast_color);
-  }
-
-  mouseOver(mx, my) {
-
-    return (Math.sqrt(Math.pow(mx - this.posx, 2) + Math.pow(my - this.posy, 2)) <= this.radius);
-  }
-
-  update() {
-
-    this.head.update(this.posx, this.posy, this.radius / 1.5)
-
-    this.left_inner_ear.update(this.posx - this.radius / 2, this.posy - this.radius / 2, this.radius / 5)
-    this.right_inner_ear.update(this.posx + this.radius / 2, this.posy - this.radius / 2, this.radius / 5)
-
-    this.left_outter_eye.update(this.posx - this.radius / 4, this.posy - this.radius / 5, this.radius / 10)
-    this.right_outter_eye.update(this.posx + this.radius / 4, this.posy - this.radius / 5, this.radius / 10)
-
-    this.left_inner_eye.update(this.posx - this.radius / 4 - 4, this.posy - this.radius / 5 - 4, this.radius / 30)
-    this.right_inner_eye.update(this.posx + this.radius / 4 - 4, this.posy - this.radius / 5 - 4, this.radius / 30)
-
-    this.outter_nouse.update(this.posx, this.posy, this.radius / 6)
-    this.inner_nouse.update(this.posx - 10, this.posy - 7, this.radius / 30)
-  }
-
-  draw(cnv) {
-
-    let ctx = cnv.getContext("2d");
-
-    this.update()
-
-    this.left_inner_ear.draw(cnv);
-    this.right_inner_ear.draw(cnv);
-
-    this.head.draw(cnv);
-
-    this.left_outter_eye.draw(cnv);
-    this.right_outter_eye.draw(cnv);
-
-    this.left_inner_eye.draw(cnv);
-    this.right_inner_eye.draw(cnv);
-
-    this.outter_nouse.draw(cnv);
-    this.inner_nouse.draw(cnv);
-
-    ctx.save();
-    {
-      ctx.translate(this.posx, this.posy + (this.radius / 6) * 1.2);
-      ctx.strokeStyle = this.color;
-      ctx.scale(1.2, 1);
-      ctx.beginPath();
-      ctx.arc(-10, 0, 10, 0, Math.PI, false);
-      ctx.stroke();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.arc(10, 0, 10, 0, Math.PI, false);
-      ctx.stroke();
-      ctx.closePath();
+    constructor (px, py, r, c) {
+        super(px, py, 'B');
+        this.r = r;
+        this.radsq = r * r;
+        this.color = c;
     }
-    ctx.restore();
-  }
+
+    mouseOver (mx, my) {
+        let x1 = 0;
+        let y1 = 0;
+        let x2 = (mx - this.posx);
+        let y2 = (my - this.posy);
+
+        return (this.sqDist(x1,y1,x2,y2) <= (this.radsq));
+    }
+
+    draw (cnv) {
+
+        this.head = new Oval(this.posx, this.posy, this.r, 1, 0.95, this.color);
+        this.earLeft = new Oval(this.posx - .75*this.r, this.posy- .63*this.r, this.r/2, 1, 0.88, this.color);
+        this.earRight = new Oval(this.posx + .75*this.r, this.posy- .63*this.r, this.r/2, 1, 0.88, this.color);
+        this.earLeftIn= new Oval(this.posx - .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, "#f39c12");
+        this.earRightIn = new Oval(this.posx + .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, "#f39c12");
+        this.eyeRight = new Oval(this.posx + this.r/3, this.posy - this.r/5.5, this.r/8, 1, 1, "black");
+        this.eyeLeft = new Oval(this.posx - this.r/3, this.posy - this.r/5.5, this.r/8, 1, 1, "black");
+        this.eyeLeftIn = new Oval(this.posx - .38*this.r, this.posy - .25*this.r, this.r/25, 1, 1, "white");
+        this.eyeRightIn = new Oval(this.posx + .29*this.r, this.posy - .25*this.r, this.r/25, 1, 1, "white");
+        this.nose = new Oval(this.posx, this.posy + this.r/6, this.r/3.5, 1, .78, "black");
+        this.noseIn = new Oval(this.posx - this.r/7, this.posy + .11*this.r, this.r/20, 1, 1, "white");
+
+        let ctx = cnv.getContext("2d");
+
+        this.earLeft.draw(cnv);
+        this.earLeftIn.draw(cnv);
+        this.earRight.draw(cnv);
+        this.earRightIn.draw(cnv);
+        this.head.draw(cnv);
+        this.eyeLeft.draw(cnv);
+        this.eyeLeftIn.draw(cnv);
+        this.eyeRight.draw(cnv);
+        this.eyeRightIn.draw(cnv);
+        
+        this.nose.draw(cnv);
+        this.noseIn.draw(cnv);
+
+        ctx.beginPath();
+        ctx.moveTo(this.posx,this.posy + this.r/3);
+        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.4, this.posx + this.r/2.3, this.posy + this.r/1.8, this.posx + this.r/2.3, this.posy + this.r/2.2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(this.posx,this.posy + this.r/3);
+        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.4, this.posx - this.r/2.3, this.posy + this.r/1.8, this.posx - this.r/2.3, this.posy + this.r/2.2);
+        ctx.stroke();
+    }
+    setPos(x, y){
+        this.posx = x;
+        this.posy = y;
+        this.head.setPos(x, y);
+        this.earLeft.setPos(x - .75*this.r/4, y - .75*this.r);
+        this.earRight.setPos(x + .75*this.r/4, this.y - .75*this.r);
+        this.orelhaED.setPos(x - .75*this.r/4, y - .75*this.r);
+        this.orelhaDD.setPos(x + .75*this.r/4, y - .75*this.r);
+        this.olhoD.setPos(x + this.r/3, y -this.r/3);
+        this.olhoE.setPos(x - this.r/3, y - this.r/3);
+        this.olhoED.setPos(x - .4 * this.r/3, y - .4*this.r);
+        this.olhoDD.setPos(x + .27*this.r/3, y - .4*this.r);
+        this.nariz.setPos(x, y + this.r/4);
+        this.narizD.setPos(x - this.r/10, y +.185 * this.r);
+    }
 }
 
 class Ghost extends DrawingObjects
