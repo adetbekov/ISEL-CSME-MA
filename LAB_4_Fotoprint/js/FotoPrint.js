@@ -11,31 +11,31 @@ class FotoPrint
     }
 
     init() {
-        let r = new Rect(20, 50, 50, 50, "#f1c40f");
+        let r = new Rect(20, 25, 50, 50, "#f1c40f");
         this.shpinDrawingSel.insert(r);
 
-        let o = new Oval(125, 75, 35, 1, 1, "#2ecc71");
+        let o = new Oval(125, 50, 35, 1, 1, "#2ecc71");
         this.shpinDrawingSel.insert(o);
 
-        let h = new Heart(215, 55, 75, "#e74c3c");
+        let h = new Heart(215, 33, 75, "#e74c3c");
         this.shpinDrawingSel.insert(h);
 
         // let dad = new Picture(200, 200, 70, 70, "imgs/allison1.jpg");
         // this.shpinDrawing.insert(dad);
 
-        let b = new Bear(320, 73, 35, "#d35400");
+        let b = new Bear(320, 52, 35, "#d35400");
         this.shpinDrawingSel.insert(b);
 
-        let g = new Ghost(430, 65 , 35, 40, "#3498db");
+        let g = new Ghost(430, 45 , 35, 40, "#3498db");
         this.shpinDrawingSel.insert(g);
 
-        let v = new Virus(490, 28, 8, "#9b59b6");
+        let v = new Virus(490, 8, 8, "#9b59b6");
         this.shpinDrawingSel.insert(v);
 
-        let m = new Batman(610, 45, 4, "#1abc9c");
+        let m = new Batman(610, 25, 4, "#1abc9c");
         this.shpinDrawingSel.insert(m);
 
-        let s = new Robot(730, 28, 1, "#34495e");
+        let s = new Robot(730, 0, 1, "#34495e");
         this.shpinDrawingSel.insert(s);
     }
 

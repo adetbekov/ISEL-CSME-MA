@@ -15,6 +15,8 @@ function main() {
     cnv.addEventListener('mousedown', drag, false);
     top.addEventListener('dblclick', makeNewItem, false);
     cnv.addEventListener('dblclick', makeNewItem, false);
+    // resizeCanvas(cnv, top)
+    // window.addEventListener('resize', function(){ resizeCanvas(cnv, top) });
 }
 
 function drawCanvasRect(cnv) {
@@ -22,7 +24,10 @@ function drawCanvasRect(cnv) {
     let color = document.getElementById('i1').value;
 
     if(first === true) {
+        console.log("first")
         ctx.clearRect(0, 0, cnv.width, cnv.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, cnv.width, cnv.height);
         ctx.strokeStyle = "black";
         ctx.lineWidth = 4;
         ctx.strokeRect(0, 0, cnv.width, cnv.height);
@@ -36,6 +41,12 @@ function drawCanvasRect(cnv) {
         ctx.strokeRect(0, 0, cnv.width, cnv.height);
     }
 
+}
+
+function resizeCanvas(c, t) {
+    let container = document.getElementsByClassName('container');
+    c.style.width = container[0].clientWidth - 30 + "px";
+    t.style.width = .8 * (container[0].clientWidth - 30) + "px";
 }
 
 function changeBackground(){
