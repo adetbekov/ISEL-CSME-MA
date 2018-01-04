@@ -6,30 +6,48 @@ class FotoPrint
         this.thingInMotion = null;
         this.offsetx = null;
         this.offsety = null;
+        this.shpinDrawingSel = new Pool(100);
         this.shpinDrawing = new Pool(100);
-        this.shpinDrawingSelector = new Pool(100);
     }
 
     init() {
-        let r = new Rect(100, 100, 20, 20, "red");
-        this.shpinDrawing.insert(r);
+        let r = new Rect(20, 50, 50, 50, "#f1c40f");
+        this.shpinDrawingSel.insert(r);
 
-        let o = new Oval(150, 150, 50, 1, 1, "blue");
-        this.shpinDrawing.insert(o);
+        let o = new Oval(125, 75, 35, 1, 1, "#2ecc71");
+        this.shpinDrawingSel.insert(o);
 
-        let h = new Heart(250, 250, 80, "pink");
-        this.shpinDrawing.insert(h);
+        let h = new Heart(215, 55, 75, "#e74c3c");
+        this.shpinDrawingSel.insert(h);
 
         // let dad = new Picture(200, 200, 70, 70, "imgs/allison1.jpg");
         // this.shpinDrawing.insert(dad);
 
-        let b = new Bear(340, 70, 50, "#d35400");
-        this.shpinDrawing.insert(b);
+        let b = new Bear(320, 73, 35, "#d35400");
+        this.shpinDrawingSel.insert(b);
+
+        let g = new Ghost(430, 65 , 35, 40, "#3498db");
+        this.shpinDrawingSel.insert(g);
+
+        let v = new Virus(490, 28, 8, "#9b59b6");
+        this.shpinDrawingSel.insert(v);
+
+        let m = new Batman(610, 45, 4, "#1abc9c");
+        this.shpinDrawingSel.insert(m);
+
+        let s = new Robot(730, 28, 1, "#34495e");
+        this.shpinDrawingSel.insert(s);
     }
 
     drawObj(cnv) {
         for (let i = 0; i < this.shpinDrawing.stuff.length; i++) {
             this.shpinDrawing.stuff[i].draw(cnv);
+        }
+    }
+
+    drawObjSel(top){
+        for (let i = 0; i < this.shpinDrawingSel.stuff.length; i++) {
+            this.shpinDrawingSel.stuff[i].draw(top);
         }
     }
 
@@ -51,6 +69,7 @@ class FotoPrint
     }
 
     moveObj(mx, my) {
+        // this.shpinDrawing.stuff[this.thingInMotion].setPos(mx, my);
         this.shpinDrawing.stuff[this.thingInMotion].posx = mx - this.offsetx;
         this.shpinDrawing.stuff[this.thingInMotion].posy = my - this.offsety;
     }
@@ -75,21 +94,22 @@ class FotoPrint
 
     insertOnCanvas(obj){
         this.shpinDrawing.insert(obj);
+
     }
 
-    // selectObj(mx, my){
-    //     let item = null;
-    //     let endpt = this.shpinDrawingSel.stuff.length-1;
+    selectObj(mx, my){
+        let item = null;
+        let endpt = this.shpinDrawingSel.stuff.length-1;
 
-    //     for (let i = endpt; i >= 0; i--) {
-    //         if (this.shpinDrawingSel.stuff[i].mouseOver(mx,my)) {
-    //             item = this.cloneObj(this.shpinDrawingSel.stuff[i]);
-    //             this.shpinDrawing.insert(item);
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
+        for (let i = endpt; i >= 0; i--) {
+            if (this.shpinDrawingSel.stuff[i].mouseOver(mx,my)) {
+                item = this.cloneObj(this.shpinDrawingSel.stuff[i]);
+                this.shpinDrawing.insert(item);
+                return true;
+            }
+        }
+        return false;
+    }
 
     cloneObj (obj) {
         let item = {};
@@ -97,9 +117,11 @@ class FotoPrint
         let txtColor = document.getElementById('i3').value;
         let text = document.getElementById('text').value;
 
+        console.log(obj.name)
+
         switch(obj.name) {
             case "R":
-                item = new Rect(obj.posx + 20, obj.posy + 20, obj.w, obj.h, obj.color);
+                item = new Rect(obj.posx + 20, obj.posy + 20, obj.w, obj.h, objColor);
                 break;
 
             case "P":
@@ -107,11 +129,11 @@ class FotoPrint
                 break;
 
             case "O":
-                item = new Oval(obj.posx + 20, obj.posy + 20, obj.r, obj.hor, obj.ver, obj.color);
+                item = new Oval(obj.posx + 20, obj.posy + 20, obj.r, obj.hor, obj.ver, objColor);
                 break;
 
             case "H":
-                item = new Heart(obj.posx + 20, obj.posy + 20, obj.drx * 4, obj.color);
+                item = new Heart(obj.posx + 20, obj.posy + 20, obj.drx * 4, objColor);
                 break;
 
             case "B":
@@ -119,15 +141,23 @@ class FotoPrint
                 break;
 
             case "G":
-                item = new Ghost(obj.posx, obj.posy, obj.w, obj.h, objColor);
+                item = new Ghost(obj.posx+ 20, obj.posy+ 20, obj.w, obj.h, objColor);
                 break;
 
             case "V":
-                item = new Rosa_Ventos(obj.posx, obj.posy, obj.w, objColor);
+                item = new Virus(obj.posx+ 20, obj.posy+ 20, obj.w, objColor);
+                break;
+
+            case "M":
+                item = new Batman(obj.posx+ 20, obj.posy+ 20, obj.w, objColor);
+                break;
+
+            case "S":
+                item = new Robot(obj.posx+ 20, obj.posy+ 20, obj.w, objColor);
                 break;
 
             case "T":
-                item = new Text(obj.posx, obj.posy, obj.w, obj.h, text, txtColor);
+                item = new Text(obj.posx+ 20, obj.posy+ 20, obj.w, obj.h, text, txtColor);
                 break;
 
             default: throw new TypeError("Can not clone this type of object");

@@ -64,6 +64,10 @@ class Rect extends DrawingObjects
         return ((mx >= this.posx) && (mx <= (this.posx + this.w)) && (my >= this.posy) && (my <= (this.posy + this.h)));
 
     }
+    setPos(x, y){
+        this.posx = x;
+        this.posy = y;
+    }
 
 }
 
@@ -204,6 +208,11 @@ class Heart extends DrawingObjects
     }
 }
 
+function shadeColor(color, percent) {  
+    var num = parseInt(color.slice(1),16), amt = Math.round(2.55 * percent), R = (num >> 16) + amt, G = (num >> 8 & 0x00FF) + amt, B = (num & 0x0000FF) + amt;
+    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+}
+
 class Bear extends DrawingObjects {
     constructor (px, py, r, c) {
         super(px, py, 'B');
@@ -226,14 +235,15 @@ class Bear extends DrawingObjects {
         this.head = new Oval(this.posx, this.posy, this.r, 1, 0.95, this.color);
         this.earLeft = new Oval(this.posx - .75*this.r, this.posy- .63*this.r, this.r/2, 1, 0.88, this.color);
         this.earRight = new Oval(this.posx + .75*this.r, this.posy- .63*this.r, this.r/2, 1, 0.88, this.color);
-        this.earLeftIn= new Oval(this.posx - .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, "#f39c12");
-        this.earRightIn = new Oval(this.posx + .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, "#f39c12");
+        this.earLeftIn= new Oval(this.posx - .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, shadeColor(this.color, 35));
+        this.earRightIn = new Oval(this.posx + .75*this.r, this.posy- .63*this.r, this.r/4.5, 1, 0.88, shadeColor(this.color, 35));
         this.eyeRight = new Oval(this.posx + this.r/3, this.posy - this.r/5.5, this.r/8, 1, 1, "black");
         this.eyeLeft = new Oval(this.posx - this.r/3, this.posy - this.r/5.5, this.r/8, 1, 1, "black");
         this.eyeLeftIn = new Oval(this.posx - .38*this.r, this.posy - .25*this.r, this.r/25, 1, 1, "white");
         this.eyeRightIn = new Oval(this.posx + .29*this.r, this.posy - .25*this.r, this.r/25, 1, 1, "white");
-        this.nose = new Oval(this.posx, this.posy + this.r/6, this.r/3.5, 1, .78, "black");
-        this.noseIn = new Oval(this.posx - this.r/7, this.posy + .11*this.r, this.r/20, 1, 1, "white");
+        this.nose = new Oval(this.posx, this.posy + this.r/4, this.r/3.5, 1, .78, "black");
+        this.noseIn = new Oval(this.posx - this.r/7, this.posy + .15*this.r, this.r/20, 1, 1, "white");
+        this.muzzle = new Oval(this.posx, this.posy + this.r/2.2, this.r/1.6, 1, .78, shadeColor(this.color, 35));
 
         let ctx = cnv.getContext("2d");
 
@@ -247,52 +257,394 @@ class Bear extends DrawingObjects {
         this.eyeRight.draw(cnv);
         this.eyeRightIn.draw(cnv);
         
+        this.muzzle.draw(cnv);
         this.nose.draw(cnv);
         this.noseIn.draw(cnv);
 
         ctx.beginPath();
         ctx.moveTo(this.posx,this.posy + this.r/3);
-        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.4, this.posx + this.r/2.3, this.posy + this.r/1.8, this.posx + this.r/2.3, this.posy + this.r/2.2);
+        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.3, this.posx + this.r/2.3, this.posy + this.r/1.6, this.posx + this.r/2.3, this.posy + this.r/2.2);
         ctx.stroke();
 
         ctx.beginPath();
         ctx.moveTo(this.posx,this.posy + this.r/3);
-        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.4, this.posx - this.r/2.3, this.posy + this.r/1.8, this.posx - this.r/2.3, this.posy + this.r/2.2);
+        ctx.bezierCurveTo(this.posx, this.posy + this.r/1.3, this.posx - this.r/2.3, this.posy + this.r/1.6, this.posx - this.r/2.3, this.posy + this.r/2.2);
         ctx.stroke();
     }
     setPos(x, y){
         this.posx = x;
         this.posy = y;
-        this.head.setPos(x, y);
-        this.earLeft.setPos(x - .75*this.r/4, y - .75*this.r);
-        this.earRight.setPos(x + .75*this.r/4, this.y - .75*this.r);
-        this.orelhaED.setPos(x - .75*this.r/4, y - .75*this.r);
-        this.orelhaDD.setPos(x + .75*this.r/4, y - .75*this.r);
-        this.olhoD.setPos(x + this.r/3, y -this.r/3);
-        this.olhoE.setPos(x - this.r/3, y - this.r/3);
-        this.olhoED.setPos(x - .4 * this.r/3, y - .4*this.r);
-        this.olhoDD.setPos(x + .27*this.r/3, y - .4*this.r);
-        this.nariz.setPos(x, y + this.r/4);
-        this.narizD.setPos(x - this.r/10, y +.185 * this.r);
     }
 }
 
 class Ghost extends DrawingObjects
 {
-    constructor () {
+    constructor (px, py, w, h, c) {
         super(px, py, 'G');
+        this.color = c;
+        this.w = w;
+        this.h = h;
 
     }
 
     mouseOver (mx, my) {
+        return ((mx >= this.posx - this.w) && (mx <= (this.posx + this.w)) && (my >= this.posy - this.h) && (my <= (this.posy + this.h)));
+    }
 
+    draw (cnv) {
+
+        this.ghostHead = new Oval(this.posx, this.posy, this.w, 1, 1, this.color);
+        this.ghostRigthEye = new Oval(this.posx + this.w/1.6, this.posy + this.h/10, this.w/4, 1, 1, "white");
+        this.ghostLeftEye = new Oval(this.posx - this.w/6, this.posy + this.h/10, this.w/4, 1, 1, "white");
+        this.ghostRigthEyeBlack = new Oval(this.posx + this.w/2, this.posy + this.h/10, this.w/7, 0.8, 1, "black");
+        this.ghostLeftEyeBlack = new Oval(this.posx - this.w/3.3, this.posy + this.h/10, this.w/7, 0.8, 1, "black");
+
+        let ctx = cnv.getContext("2d");
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.posx - this.w, this.posy, this.w*2, this.h);
+        ctx.closePath();
+
+        this.ghostHead.draw(cnv);
+        this.ghostRigthEye.draw(cnv);
+        this.ghostLeftEye.draw(cnv);
+        this.ghostRigthEyeBlack.draw(cnv);
+        this.ghostLeftEyeBlack.draw(cnv);
+
+
+        ctx.beginPath();
+        ctx.moveTo(this.posx - this.w, this.posy + this.h);
+        ctx.lineTo(this.posx - .6*this.w, this.posy + this.h/2); 
+        ctx.lineTo(this.posx - .3*this.w, this.posy + this.h);
+        ctx.closePath();
+
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+
+        ctx.beginPath();
+        ctx.moveTo(this.posx, this.posy + this.h/2);
+        ctx.lineTo(this.posx - .35*this.w, this.posy + this.h);
+        ctx.lineTo(this.posx + .4*this.w, this.posy + this.h);
+        ctx.closePath();
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(this.posx + .6*this.w, this.posy + this.h/2);
+        ctx.lineTo(this.posx + .3*this.w, this.posy + this.h);
+        ctx.lineTo(this.posx + this.w, this.posy + this.h);
+        ctx.closePath();
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+
+
+    }
+
+    setPos(x, y) {
+        this.posx = x;
+        this.posy = y;
+        // this.ghostHead.setPos(x, y);
+        // this.ghostLeftEye.setPos(x - this.w/2, y - this.h/10);
+        // this.ghostRigthEye.setPos(x + this.w/2, y - this.h/10);
+        // this.ghostLeftEyeBlack.setPos(x + this.w/2, y + this.h/10);
+        // this.ghostRigthEyeBlack.setPos(x - this.w/2, y + this.h/10);
+    }
+}
+
+class Virus extends DrawingObjects
+{
+    constructor (px, py, w, c) {
+        super(px, py, 'V');
+        this.color = c;
+        this.w = w;
+        this.matrix = [
+            "0000000000000",
+            "0001000001000",
+            "0000100010000",
+            "0001111111000",
+            "0011011101100",
+            "0111111111110",
+            "0101011101010",
+            "0101000001010",
+            "0000110110000",
+            "0000000000000"
+        ]
+    }
+
+    mouseOver (mx, my) {
+        return ((mx >= this.posx) && (mx <= (this.posx + this.w * this.matrix[0].length)) && (my >= this.posy) && (my <= (this.posy + this.w * this.matrix.length)));
+    }
+
+    draw (cnv) {
+
+        let matrix = this.matrix
+
+        let drawMatrix = new Array();
+
+        for(let i = 0; i < matrix.length; i++) {
+            drawMatrix[i] = new Array();
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(matrix[i][j] != "0") {
+                    drawMatrix[i][j] = new Rect(this.posx + this.w * j, this.posy + this.w * i, this.w, this.w, this.color);
+                }
+            }
+        }
+
+        let ctx = cnv.getContext("2d");
+
+        for(let i = 0; i < matrix.length; i++) {
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(drawMatrix[i][j]){
+                    drawMatrix[i][j].draw(cnv);
+                }
+            }
+        }
+    }
+
+    setPos(x, y) {
+        this.posx = x;
+        this.posy = y;
+
+        this.ghostHead.setPos(x, y);
+        this.ghostLeftEye.setPos(x - this.w/2, y - this.h/10);
+        this.ghostRigthEye.setPos(x + this.w/2, y - this.h/10);
+        this.ghostLeftEyeBlack.setPos(x + this.w/2, y + this.h/10);
+        this.ghostRigthEyeBlack.setPos(x - this.w/2, y + this.h/10);
+    }
+}
+
+class Batman extends DrawingObjects
+{
+    constructor (px, py, w, c) {
+        super(px, py, 'M');
+        this.color = c;
+        this.w = w;
+        this.matrix = [
+            "11111111111111111111111111",
+            "11111100111111111100111111",
+            "11110001111100111110001111",
+            "11000001111000011110000011",
+            "10000000111000011100000001",
+            "10000000000000000000000001",
+            "00000000000000000000000000",
+            "00000000000000000000000000",
+            "10000000000000000000000001",
+            "10000110001000010001100001",
+            "11001111111100111111110011",
+            "11100111111100111111100111",
+            "11111111111111111111111111"
+        ]
+    }
+
+    mouseOver (mx, my) {
+        return ((mx >= this.posx) && (mx <= (this.posx + this.w * this.matrix[0].length)) && (my >= this.posy) && (my <= (this.posy + this.w * this.matrix.length)));
+    }
+
+    draw (cnv) {
+
+        let matrix = this.matrix
+
+        let drawMatrix = new Array();
+
+        for(let i = 0; i < matrix.length; i++) {
+            drawMatrix[i] = new Array();
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(matrix[i][j] == "0") {
+                    drawMatrix[i][j] = new Rect(this.posx + this.w * j, this.posy + this.w * i, this.w, this.w, this.color);
+                }
+            }
+        }
+
+        let ctx = cnv.getContext("2d");
+
+        for(let i = 0; i < matrix.length; i++) {
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(drawMatrix[i][j]){
+                    drawMatrix[i][j].draw(cnv);
+                }
+            }
+        }
+    }
+
+    setPos(x, y) {
+        this.posx = x;
+        this.posy = y;
+    }
+}
+
+class Robot extends DrawingObjects
+{
+    constructor (px, py, w, c) {
+        super(px, py, 'S');
+        this.color = c;
+        this.w = w;
+        this.matrix = [
+            "111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+            "111111111111111111111111111111111111111100000111111111111111111111111111111111111",
+            "111111111111111111111111111111111111000000000000011111111111111111111111111111111",
+            "111111111111111111111111111111111000001111111111100111111111111111111111111111111",
+            "111111111111111111111111111111100000111000001111111001111111111111111111111111111",
+            "111111111111111111111111111111000000000000001111111110111111111111111111111111111",
+            "111111111111111111111111111110000010000000000111111111011111111111111111111111111",
+            "111111111111111111111111111100000110000000000111111111101111111111111111111111111",
+            "111111111111111111111111111000001110000000000011111111110111111111111111111111111",
+            "111111111111111111111111110000011110000000000011111111111011111111111111111111111",
+            "111111111111111111111111100000011110000000000011111100010001111111111111111111111",
+            "111111111111111111111111000000111110000000000011101100010001111111111111111111111",
+            "111111111111111111111111000000111110000000111111000110001000111111111111111111111",
+            "111111111111111111111110000000110001101110000011100110001000011111111111111111111",
+            "111111111111111111111110000000000001101000000001111110000000011111111111111111111",
+            "111111111111111111111110000000100001001000000001111111111100001111111111111111111",
+            "111111111111111111111100000000100001001000000001111000000000001111111111111111111",
+            "111111111111111111111100000000100001000000000000000001111111001111111111111111111",
+            "111111111111111111111100000000100001001100000001111111101000001111111111111111111",
+            "111111111111111111111100000000100001100000111111000000000000011111111111111111111",
+            "111111111111111111111100000000100000001111110000000000000011111111111111111111111",
+            "111111111111111111111100000000000011111111000000001111111111111111111111111111111",
+            "111111111111111111111100000000011111111111000111111110000000011111111111111111111",
+            "111111111111111111111100000001111111111111111111111000000000011111111111111111111",
+            "111111111111111111111100000001111111111111110000000000000111111111111111111111111",
+            "111111111111111111111100000111111111111111100000111111111111111110111111111111111",
+            "111111111111111111111100011111111111111111111111111111111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111100110000111111111111111111",
+            "111111111111111111111111111111111111111111111111100000000000000111111111111111111",
+            "111111111111111111111111111111111111111111111110000000000111111111111111111111111",
+            "111111111111111111111111111111111111111111110000000001111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111111101111111111111111111111",
+            "111111111111111111111111111111111111111111111111111110000000111111100111111111111",
+            "111111111111111111111111111111111111111111111111111110010000111111100111111111111",
+            "111111111111111111111111111111111111111111111111111110011000111111100011111111111",
+            "111111111111111111111111111111111111111111111111111111011111111111100111111111111",
+            "111111111111111111110011111111111111111111111111111111011111011111110111111111111",
+            "111111111111111111111001111111111111111111111111111111011100011111110111111111111",
+            "111111111111111111111001111111111111111111111111111111000100011111110011111111111",
+            "111111111111111111111101111111111111111111111111111111100000011111110011111111111",
+            "111111111111111111101001111111111111111111111111111111100000011111110011111111111",
+            "111111111111111111110001111111111111111111111111111111101110101111111001111111111",
+            "111111111111111111100001111111111111111111111111111111100111101111111000111111111",
+            "111111111111111111100001111111111111111111111111111111110111101111111001111111111",
+            "111111111111111111100001011111111111111111111111111111110111101111111001111111111",
+            "111111111111111111100001011111111111111111111111111111110000000111111111111111111",
+            "111111111111111111100001111111111111111111111111111111110000011111111111111111111",
+            "111111111111111111100001111111111111111111111111111111111111111111111111111111111",
+            "111111111111111111100000111111100111111111111111111111111111111111111111111111111",
+            "111111111111111111000011111111000111111111111111111111111111111111111111111111111",
+            "111111111111111111000011100000000111111111111111111111111111111111111111111111111",
+            "111111111111111111000010000000000111111111111111111111111111111111111111111111111",
+            "111111111111111111000010000000000011111110110111111111111111111011111111111111111",
+            "111111111111111110000111111110000011110000100111111111111111000011111111111111111",
+            "111111111111111110000111111111000011110000101011111111111100111001111111111111111",
+            "111111111111111110000111111111001111110000001011111111111101111101111111111111111",
+            "111111111111111110000111111111111111110000001011111111111101111101111111111111111",
+            "111111111111111110000111111111111111111000010011110011111111111001111111111111111",
+            "111111111111111100000111111111111111111000010001111111111110111100111111111111111",
+            "111111111111111100001111111111111111111000010101111111111110111000111111111111111",
+            "111111111111111100001111111111111111111000111111111111111110000001100011111111111",
+            "111111111111111110001111111111111111111101111111111111111110100010111111111111111",
+            "111111111111111111001111111111111111111010111111111110111111011111111111111111111",
+            "111111111111111111111111111111111111111111111111111111001111111111111111111111111",
+            "111111111111111111111111111111111111111101111111111111111111111111111111111111111",
+            "111111111111011111111111110011111111111111111111111111111111111111111111111111111",
+            "111111111111000011111111110011111111110000111111111111111111111111111111111111111",
+            "111111111111100011111111111111111000000011111111111111111111111111111111111111111",
+            "111111111111110011111111111111111111111111111111111111111111001111111011111111111",
+            "111111111111111111111111111111111111111111111111111111100000001111110011111111111",
+            "111111111111111111111111111111111111111111111111110000000000111011100111111111111",
+            "111111111111111111111111111111111111111111111110000000011111111110001100111111111",
+            "111111111111111111111111111110111011111111111111000000111111111000000001111100111",
+            "111111111111111111111111111110110011111111111111000000011111111110000100000000111",
+            "111111111111111111111111111110111011111111111111111001111111110000001000000011111",
+            "110111111111111111111111111110111111111111111111111111111111111100000000111111111",
+            "110011111111111111111111111110111111111111111111111111111111111110001111111111111",
+            "111001111111111111111110011100111011111111111111111111111111111111111111111111111",
+            "111100111111111111111110011100111011111111111111111111111111111111111111111111111",
+            "111110011111111111111110001110111111111111111111111111111111111111111111111111111",
+            "111111001111111111111110000110111111111111111111111111111111111111111111111111111",
+            "111111100111111111111111000000010011111111111111111111111111111111111111111111111",
+            "111111110011111111111111000000000011111111111111111111111111111111111111111111111",
+            "111111111001111111111111000000000110111111101111111111111111111111111111111111111",
+            "111111111100111111111111100011100000111111100111111111111111111111111111111111111",
+            "111111111110011111111111100000000011111111110011111111111111111111111111111111111",
+            "111111111111001111111100000000011111111111111101111111111111111111111111111111111",
+            "111111111111100111100000000111111111111111111110011111111111111111111111111111111",
+            "111111111111110000000011111111111111111111111111001111111111111111111111111111111",
+            "111111111111111100011111111111111111111111111111100111111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111110011111111111111111100011111111",
+            "111111111111111111111111111111111111111111111111111001111111111100100000111111111",
+            "111111111111111111111111111111111111111111111111111100111111111000000111111111111",
+            "111111111111111111111111111111111111111111111111111110011100000001111111111111111",
+            "111111111111111111111111111111111111111111111111111111100000011111111111111111111",
+            "111111111111111111111111111111111111111111111111111111110111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+            "111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+        ]
+    }
+
+    mouseOver (mx, my) {
+        return ((mx >= this.posx) && (mx <= (this.posx + this.w * this.matrix[0].length)) && (my >= this.posy) && (my <= (this.posy + this.w * this.matrix.length)));
+    }
+
+    draw (cnv) {
+
+        let matrix = this.matrix
+
+        let drawMatrix = new Array();
+
+        for(let i = 0; i < matrix.length; i++) {
+            drawMatrix[i] = new Array();
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(matrix[i][j] == "0") {
+                    drawMatrix[i][j] = new Rect(this.posx + this.w * j, this.posy + this.w * i, this.w, this.w, this.color);
+                }
+            }
+        }
+
+        let ctx = cnv.getContext("2d");
+
+        for(let i = 0; i < matrix.length; i++) {
+            for(let j = 0; j < matrix[0].length; j++) {
+                if(drawMatrix[i][j]){
+                    drawMatrix[i][j].draw(cnv);
+                }
+            }
+        }
+    }
+
+    setPos(x, y) {
+        this.posx = x;
+        this.posy = y;
+    }
+}
+
+class Text extends DrawingObjects {
+
+    constructor (px, py, w, h, text, c) {
+        super(px, py, 'T');
+        this.w = w;
+        this.h = h;
+        this.text = text;
+        this.color = c;
     }
 
     draw (cnv) {
         let ctx = cnv.getContext("2d");
-
+        ctx.fillStyle = this.color;
+        ctx.fillText(this.text, this.posx, this.posy);
 
     }
+
+    mouseOver(mx, my) {
+        return ((mx >= this.posx) && (mx <= (this.posx + this.w)) && (my >= this.posy - this.h) && (my <= (this.posy)));
+
+    }
+    setPos(x, y){
+        this.posx = x;
+        this.posy = y;
+    }
 }
-
-

@@ -12,15 +12,42 @@
 <body>
 
 <section>
-    <canvas id="canvas" width="600" height="400">
+    <h1>Make Your own photo!</h1>
+</section>
+
+<section>
+    <canvas id="top" width="840" height="150">
         Your browser doesn't recognize the canvas element
     </canvas>
 </section>
 
 <section>
-    <button onclick="saveasimage();"> Save Image </button>
+    <canvas id="canvas" width="840" height="400">
+        Your browser doesn't recognize the canvas element
+    </canvas>
+</section>
+
+<section id="buttons">
+
+    <label for="i1">Select your background color: </label>
+    <input id="i1" type="color" name="backcolor" value="#000000">
+    <button onclick="changeBackground()"> Submit </button>
+    <br>
+    <label for="i2">Select your figure color: </label>
+    <input id="i2" type="color" name="objcolor" value="#33cc33">
+    <br>
+    <label for="i3">Select your text color: </label>
+    <input id="i3" type="color" name="txtcolor" value="#000000">
+    <br>
+    <input type="text" id="text" name="caixaText" value="Insert text here">
+    <button onclick="insertText()"> Submit text </button>
+    <br>
+    <input type="file" id="imageFile">
+    <button onclick="insertImage()"> Submit image </button>
     <br>
     <button onclick="remove();"> Delete </button>
+    <br>
+
 </section>
 
 <section>

@@ -1,25 +1,49 @@
 'use strict';
 
 let app = null;
+let first = true;
 
 function main() {
     let cnv = document.getElementById('canvas');
+    let top = document.getElementById('top');
 
+    drawCanvasRect(top);
     drawCanvasRect(cnv);
     app = new FotoPrint();
     app.init();
-    app.drawObj(cnv);
+    app.drawObjSel(top);
     cnv.addEventListener('mousedown', drag, false);
-    cnv.addEventListener('dblclick', makenewitem, false);
+    top.addEventListener('dblclick', makeNewItem, false);
+    cnv.addEventListener('dblclick', makeNewItem, false);
 }
 
 function drawCanvasRect(cnv) {
     let ctx = cnv.getContext("2d");
+    let color = document.getElementById('i1').value;
 
-    ctx.clearRect(0, 0, cnv.width, cnv.height);
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(0, 0, cnv.width, cnv.height);
+    if(first === true) {
+        ctx.clearRect(0, 0, cnv.width, cnv.height);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(0, 0, cnv.width, cnv.height);
+    }
+    else{
+        ctx.clearRect(0, 0, cnv.width, cnv.height);
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, cnv.width, cnv.height);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(0, 0, cnv.width, cnv.height);
+    }
+
+}
+
+function changeBackground(){
+    let cnv = document.getElementById('canvas');
+
+    first = false;
+    drawCanvasRect(cnv);
+    app.drawObj(cnv);
 }
 
 //Drag & Drop operation
@@ -78,7 +102,7 @@ function drop() {
 
 //Insert a new Object on Canvas
 //dblclick Event
-function makenewitem(ev) {
+function makeNewItem(ev) {
     let mx = null;
     let my = null;
     let cnv = document.getElementById('canvas');
@@ -94,6 +118,11 @@ function makenewitem(ev) {
         drawCanvasRect(cnv);
         app.drawObj(cnv);
     }
+
+    else if (app.selectObj(mx, my)) {
+        drawCanvasRect(cnv);
+        app.drawObj(cnv);
+    }
 }
 
 //Delete button
@@ -106,13 +135,43 @@ function remove() {
     app.drawObj(cnv);
 }
 
+function insertText() {
+    let cnv = document.getElementById('canvas');
+    let ctx = cnv.getContext('2d');
+    let text = document.getElementById('text').value;
+    let color = document.getElementById('i3').value;
+    ctx.font = "12pt Helvetica";
+    let widthText = ctx.measureText(text).width;
+    let fullText = new Text(50, 50, widthText, 20, text, color);
+    drawCanvasRect(cnv);
+    app.insertOnCanvas(fullText);
+    app.drawObj(cnv);
+}
+
+function insertImage() {
+    let cnv = document.getElementById('canvas');
+    let URL = window.webkitURL || window.URL;
+    let imagePath = document.getElementById('imageFile').files[0];
+    let url = URL.createObjectURL(imagePath);
+    let img = new Image();
+    img.src = imagePath;
+
+    let fullImage = new Picture(50, 50, 150, 150, url);
+
+    drawCanvasRect(cnv);
+    app.insertOnCanvas(fullImage);
+    app.drawObj(cnv);
+}
+
 //Save button
 //Onclick Event
-function saveasimage() {
+function saveAsImage() {
     try {
         window.open(document.getElementById('canvas').toDataURL("imgs/png"));}
     catch(err) {
         alert("You need to change browsers OR upload the file to a server.");
     }
 }
+
+
 
